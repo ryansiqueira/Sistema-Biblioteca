@@ -1,10 +1,10 @@
 # Sistema-Biblioteca
 
-* Projeto Devschool MJV *
+* Projeto Devschool MJV 
 
-* Integrantes *
+** Integrantes 
 
-Nome: Matheus Pereira
-Nome: Ronaldo Pereira
-Nome: Ryan Siqueira
+*Nome: Matheus Pereira
+*Nome: Ronaldo Pereira
+*Nome: Ryan Siqueira
 
