@@ -1,6 +1,7 @@
 package mjv.devschool.sistemalivaria.dto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import mjv.devschool.sistemalivaria.model.LocacaoItem;
@@ -12,8 +13,8 @@ public class LocacaoItemDto implements Serializable{
 
 	private Long id;
 	
-	private Date dataPrevisaoEntrega;
-	private Date dataEntrega;
+	private LocalDate dataPrevisaoEntrega;
+	private LocalDate dataEntrega;
 	private Integer diarias;
 	private Double valorDiaria;
 	private Double valorLocacao;
@@ -25,7 +26,7 @@ public class LocacaoItemDto implements Serializable{
 		
 	}
 	
-	public LocacaoItemDto(Long id, Date dataPrevisaoEntrega,Date dataEntrega,Integer diarias,Double valorDiaria,Double valorLocacao) {
+	public LocacaoItemDto(Long id, LocalDate dataPrevisaoEntrega,LocalDate dataEntrega,Integer diarias,Double valorDiaria,Double valorLocacao) {
 		
 		this.id = id;
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
@@ -66,19 +67,19 @@ public class LocacaoItemDto implements Serializable{
 		this.id = id;
 	}
 
-	public Date getDataPrevisaoEntrega() {
+	public LocalDate getDataPrevisaoEntrega() {
 		return dataPrevisaoEntrega;
 	}
 
-	public void settDataPrevisaoEntrega(Date dataPrevisaoEntrega) {
+	public void settDataPrevisaoEntrega(LocalDate dataPrevisaoEntrega) {
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
 	}
 
-	public Date getDataEntrega() {
+	public LocalDate getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(Date dataEntrega) {
+	public void setDataEntrega(LocalDate dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 

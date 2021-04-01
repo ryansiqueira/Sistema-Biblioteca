@@ -1,8 +1,7 @@
 package mjv.devschool.sistemalivaria.model;
 
 import java.io.Serializable;
-import java.util.Date;
-
+import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,12 +24,11 @@ public class LocacaoItem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Date dataPrevisaoEntrega;
-	private Date dataEntrega;
+	private LocalDate dataPrevisaoEntrega;
+	private LocalDate dataEntrega;
 	private Integer diarias;
 	private Double valorDiaria;
 	private Double valorLocacao;
-	
 	
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -41,7 +39,7 @@ public class LocacaoItem implements Serializable {
 		
 	}
 
-	public LocacaoItem(Long id, Date dataPrevisaoEntrega, Date dataEntrega, Integer diarias, Double valorDiaria, Double valorLocacao) {
+	public LocacaoItem(Long id, LocalDate dataPrevisaoEntrega, LocalDate dataEntrega, Integer diarias, Double valorDiaria, Double valorLocacao) {
 		
 		this.id = id;
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
@@ -59,19 +57,19 @@ public class LocacaoItem implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDataPrevisaoEntrega() {
+	public LocalDate getDataPrevisaoEntrega() {
 		return dataPrevisaoEntrega;
 	}
 
-	public void setDataPrevisaoEntrega(Date dataPrevisaoEntrega) {
+	public void setDataPrevisaoEntrega(LocalDate dataPrevisaoEntrega) {
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
 	}
 
-	public Date getDataEntrega() {
+	public LocalDate getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(Date dataEntrega) {
+	public void setDataEntrega(LocalDate dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
