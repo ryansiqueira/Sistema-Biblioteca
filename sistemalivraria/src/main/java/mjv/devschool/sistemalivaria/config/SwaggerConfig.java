@@ -54,22 +54,22 @@ public class SwaggerConfig {
 		 
 		ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
  
-		apiInfoBuilder.title("Digytal - Springboot JPA - REST API");
-		apiInfoBuilder.description("API exemplo de uso de Springboot JPA e REST API");
+		apiInfoBuilder.title("Desafio Final DevSchool MJV");
+		apiInfoBuilder.description("Sistema livraria");
 		apiInfoBuilder.version("1.0");
-		apiInfoBuilder.termsOfServiceUrl("Termo de uso: Digytal");
-		apiInfoBuilder.license("Licença - Digytal");
-		apiInfoBuilder.licenseUrl("http://www.digytal.com.br");
+		apiInfoBuilder.termsOfServiceUrl("Termo de uso: Grupo 4 - DevSchool");
+		apiInfoBuilder.license("Licença - Grupo4* ");
+		apiInfoBuilder.licenseUrl("");
 		apiInfoBuilder.contact(this.contato());
  
 		return apiInfoBuilder;
  
 	}
 	private Contact contato() {
- 
+		 
 		return new Contact(
-				"Gleyson Sampaio",
-				"http://www.digytal.com.br", 
-				"gleyson@digytal.com.br");
+				"Ryan, Ronaldo, Matheus",
+				"WhatsApp group: https://chat.whatsapp.com/KrdaWZBOgMY5JTZzXIbmKr",
+				"Grupo4@ficticio.com");
 	}
 }

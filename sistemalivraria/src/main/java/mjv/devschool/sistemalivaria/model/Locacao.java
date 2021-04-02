@@ -1,7 +1,9 @@
 package mjv.devschool.sistemalivaria.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -43,9 +46,11 @@ public class Locacao implements Serializable {
 	/*@JoinTable(name = "tb_locacao_locacaoItem",
 	joinColumns = @JoinColumn(name = "locacao_id" ),
 	inverseJoinColumns = @JoinColumn(name = "locacaoItem_id"))*/
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "locacaoitem_id", referencedColumnName="id")
-	LocacaoItem locacaoitem = new LocacaoItem();
+	
+	List<LocacaoItem> locacaoitem = new ArrayList<>();
+	//LocacaoItem locacaoitem = new LocacaoItem();
  	
 	
 	public LocacaoStatus getStatus() {
@@ -64,13 +69,13 @@ public class Locacao implements Serializable {
 		this.cadastro = cadastro;
 	}
 
-	public LocacaoItem getLocacaoitem() {
-		return locacaoitem;
-	}
+	//public LocacaoItem getLocacaoitem() {
+		//	return locacaoitem;
+		//}
 
-	public void setLocacaoitem(LocacaoItem locacaoitem) {
-		this.locacaoitem = locacaoitem;
-	}
+	//public void setLocacaoitem(LocacaoItem locacaoitem) {
+	//	this.locacaoitem = locacaoitem;
+	//}
 
 	public Locacao() {
 		

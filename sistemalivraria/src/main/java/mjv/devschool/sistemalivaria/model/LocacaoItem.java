@@ -39,13 +39,14 @@ public class LocacaoItem implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "livros_id")
-	List<Livro> livros = new ArrayList<>();
+	private Livro livro;
+	//List<Livro> livros = new ArrayList<>();
 	
 	public LocacaoItem() {
 		
 	}
 
-	public LocacaoItem(Long id, LocalDate dataPrevisaoEntrega, LocalDate dataEntrega, Integer diarias, Double valorDiaria, Double valorLocacao) {
+	public LocacaoItem(Long id, LocalDate dataPrevisaoEntrega, LocalDate dataEntrega, Integer diarias, Double valorDiaria, Double valorLocacao,Livro livro ) {
 		
 		this.id = id;
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
@@ -53,6 +54,7 @@ public class LocacaoItem implements Serializable {
 		this.diarias = diarias;
 		this.valorDiaria = valorDiaria;
 		this.valorLocacao = valorLocacao;
+		this.livro = livro;
 	}
 
 	public Long getId() {
@@ -101,6 +103,14 @@ public class LocacaoItem implements Serializable {
 
 	public void setValorLocacao(Double valorLocacao) {
 		this.valorLocacao = valorLocacao;
+	}
+	
+	public Livro getLivro() {
+		return livro;
+	}
+
+	public void setLivro(Livro livro) {
+		this.livro = livro;
 	}
 	
 	
