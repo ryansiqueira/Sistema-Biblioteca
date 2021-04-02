@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\Projeto Final MJV\Sistema-Biblioteca\.metadata\.plugins\org.eclipse.jdt.core
+1174165008.index
