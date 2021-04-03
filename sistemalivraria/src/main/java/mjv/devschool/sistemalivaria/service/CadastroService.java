@@ -6,18 +6,23 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
+import mjv.devschool.sistemalivaria.client.ViaCEPClient;
 import mjv.devschool.sistemalivaria.dto.CadastroDto;
 import mjv.devschool.sistemalivaria.dto.EnderecoDto;
 import mjv.devschool.sistemalivaria.model.Cadastro;
+import mjv.devschool.sistemalivaria.model.Endereco;
 import mjv.devschool.sistemalivaria.repositorie.CadastroRepository;
 
 @Service
 public class CadastroService {
-
 	@Autowired
 	private CadastroRepository cadRepository;
-
+	
+	
+	@Autowired
+	private ViaCEPClient viaCepClient;
 	
 	
 	public List<CadastroDto> findAll(){
@@ -48,12 +53,16 @@ public class CadastroService {
 		entidade.setLogin(dto.getLogin());
 		entidade.setSenha(dto.getSenha());
 		
-		entidade.getEndereco().setCep(dto.getEnderecoDto().getCep());
-		entidade.getEndereco().setLogradouro(dto.getEnderecoDto().getLogradouro());
-		entidade.getEndereco().setBairro(dto.getEnderecoDto().getBairro());
-		entidade.getEndereco().setLocalidade(dto.getEnderecoDto().getLocalidade());
-		entidade.getEndereco().setUf(dto.getEnderecoDto().getUf());
-		entidade.getEndereco().setIbge(dto.getEnderecoDto().getIbge());
+		
+		Endereco end = viaCepClient.buscaEnderecoPor(dto.getCep());
+		
+		entidade.setEndereco(end);
+		 
+		//RestTemplate template = new RestTemplate();
+		//entidade.setEndereco(template.getForObject("https://viacep.com.br/ws/{cep}/json",
+//				Endereco.class,entidade.getEndereco().getCep()));
+
+	
 	}
 	
 	

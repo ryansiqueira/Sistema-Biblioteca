@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import mjv.devschool.sistemalivaria.client.ViaCEPClient;
 import mjv.devschool.sistemalivaria.dto.CadastroDto;
 import mjv.devschool.sistemalivaria.service.CadastroService;
 
@@ -22,6 +23,7 @@ public class CadastroResource {
 	
 	@Autowired
 	private CadastroService cadservice;
+
 	
 	
 	
