@@ -36,8 +36,9 @@ public class CadastroService {
 	public CadastroDto insert(CadastroDto dto) {
 		
 		Cadastro entidade = new Cadastro();
-		cpDtoParaEntidade(dto,entidade);        		
-		entidade = cadRepository.save(entidade);
+		cpDtoParaEntidade(dto,entidade); 
+		verificaLogin(entidade);
+		entidade = cadRepository.save(entidade);		
 		return new CadastroDto(entidade);
 		
 	}
@@ -63,6 +64,20 @@ public class CadastroService {
 //				Endereco.class,entidade.getEndereco().getCep()));
 
 	
+	}
+	
+	// Metodo para verificar o tamanho do campo login;
+	private void verificaLogin(Cadastro login) {
+		var validaLogin = login.getLogin();
+		
+		if(validaLogin.length() > 20) {
+			System.out.println("Campo login não pode ultrapassar 20 caracteres");
+			
+		}
+		if (validaLogin == null) {
+			System.out.println("Campo login não pode ser nulo");
+		}
+			
 	}
 	
 	
