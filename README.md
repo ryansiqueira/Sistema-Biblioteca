@@ -45,15 +45,14 @@ Dividimos as classes em pacotes de acordo com suas responsabilidades.
    * Algumas versões do Spring tem exigido adicionar estas configurações no `application.properties`
   ``` 
   spring.datasource.url=jdbc:h2:mem:testdb
-  spring.datasource.driverClassName=org.h2.Driver
   spring.datasource.username=sa
   spring.datasource.password=
-  spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
   ```
    
-  * Exibir as intruções SQL executadas pela aplicação
+  * Exibir as intruções SQL executadas pela aplicação e especificar o valor que será passado
   ``` 
   spring.jpa.show-sql=true
+  spring.jpa.hibernate.ddl-auto=update
   ```
   
   * Testando em http://localhost:8080/h2-console:
