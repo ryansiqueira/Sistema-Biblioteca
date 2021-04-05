@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import mjv.devschool.sistemalivaria.model.Livro;
 
 @Repository
-public interface LivroRespository extends JpaRepository<Livro,Long> {
+public interface LivroRespository extends JpaRepository<Livro,Integer> {
 
 	
 	

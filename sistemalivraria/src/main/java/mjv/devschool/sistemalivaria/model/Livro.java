@@ -18,8 +18,8 @@ public class Livro implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name ="id")
-	private Long id;
-    
+	private Integer id;
+	@Column(columnDefinition = "TEXT")
 	private String isbn;
 	private String titulo;
 	private Double valorDiaria;
@@ -33,7 +33,7 @@ public class Livro implements Serializable {
 		
 	}
 	
-	public Livro(Long id, String isbn,String titulo, Double valorDiaria, Integer exemplares, Integer reservados) {
+	public Livro(Integer id, String isbn,String titulo, Double valorDiaria, Integer exemplares, Integer reservados) {
 		
 		this.id = id;
 		this.isbn = isbn;
@@ -52,14 +52,11 @@ public class Livro implements Serializable {
 		this.titulo = titulo;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
 	
-		this.id = id;
-	}
 
 	public String getIsbn() {
 		return isbn;
@@ -93,7 +90,21 @@ public class Livro implements Serializable {
 		this.reservados = reservados;
 	}
 	
+	public void incrementarReservado() {
+		
+		this.reservados++;
+		this.exemplares--;
+	}
 	
+	public void decrementarReservado() {
+		
+		if(this.reservados > 0) {
+			
+			this.reservados--;
+			this.exemplares++;	
+		}
+			
+	}
 	
 	
 	

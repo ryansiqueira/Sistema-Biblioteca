@@ -14,29 +14,23 @@ public class LocacaoDto implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private Long id;
-	
+
+
 	private Date dataAgendamento;
 	private Date dataRetirada;
 	private Date finalizacao;
 	private Double valorTotal;
 	private LocacaoStatus status;
-	
-	CadastroDto cadastroDto = new CadastroDto();
-	
-	
-	public CadastroDto getCadastroDto() {
-		return cadastroDto;
+	private Integer idCadastro;
+	public Integer getIdCadastro() {
+		return idCadastro;
 	}
-
-	public void setCadastroDto(CadastroDto cadastroDto) {
-		this.cadastroDto = cadastroDto;
+	public void setIdCadastro(Integer idCadastro) {
+		this.idCadastro = idCadastro;
 	}
-
 	List<LocacaoItemDto> locacaoitemsdto = new ArrayList<LocacaoItemDto>();
-	
-	
+
+
 	public List<LocacaoItemDto> getLocacaoitemsdto() {
 		return locacaoitemsdto;
 	}
@@ -46,49 +40,10 @@ public class LocacaoDto implements Serializable {
 	}
 
 	public LocacaoDto() {
-		
-		
-	}
-	
-	public LocacaoDto(Long id,Date dataAgendamento,Date dataRetirada, Date finalizacao,Double valorTotal,LocacaoStatus status) {
-		
-		this.id = id;
-		this.dataAgendamento = dataAgendamento;
-		this.dataRetirada = dataRetirada;
-		this.finalizacao = finalizacao;
-		this.valorTotal = valorTotal;
-		this.status = status;
-	}
-	
-	public LocacaoDto(Locacao entidade) {
-		
-		this.id = entidade.getId();
-		this.dataAgendamento = entidade.getDataAgendamento();
-		this.dataRetirada = entidade.getDataRetirada();
-		this.finalizacao = entidade.getFinalizacao();
-		this.valorTotal = entidade.getValorTotal();
-		this.status = entidade.getStatus();
-		this.getCadastroDto().setId(entidade.getCadastro().getId());
-		this.getCadastroDto().setLogin(entidade.getCadastro().getLogin());
-		this.getCadastroDto().getEnderecoDto().setBairro(entidade.getCadastro().getEndereco().getBairro());
-		
+
+
 	}
 
-	public LocacaoDto(Date dataAgendamento,LocacaoStatus status, Double valorTotal) {
-		
-		this.dataAgendamento = dataAgendamento;
-		this.status = status;
-		this.valorTotal = valorTotal;
-		
-	}
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Date getDataAgendamento() {
 		return dataAgendamento;
@@ -121,8 +76,8 @@ public class LocacaoDto implements Serializable {
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-	
-	
-		
-		
+
+
+
+
 }

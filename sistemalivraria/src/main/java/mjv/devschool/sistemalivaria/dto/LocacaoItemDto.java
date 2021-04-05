@@ -19,28 +19,13 @@ public class LocacaoItemDto implements Serializable {
 	private Integer diarias;
 	private Double valorDiaria;
 	private Double valorLocacao;
-	
-	
-	LivroDto livroDto = new LivroDto();
-	
-	public LocacaoItemDto() {
-		
+	private Integer idLivro;
+	public Integer getIdLivro() {
+		return idLivro;
 	}
-	
-	public LocacaoItemDto(Long id, Date dataPrevisaoEntrega,Date dataEntrega,Integer diarias, Double valorDiaria,Double valorLocacao) {
-		
-		this.id = id;
-		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
-		this.dataEntrega = dataEntrega;
-		this.diarias = diarias;
-		this.valorDiaria = valorDiaria;
-		this.valorLocacao = valorLocacao;
-		
+	public void setIdLivro(Integer idLivro) {
+		this.idLivro = idLivro;
 	}
-
-	
-	
-	
 	public Long getId() {
 		return id;
 	}

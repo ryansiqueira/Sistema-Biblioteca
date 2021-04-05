@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import mjv.devschool.sistemalivaria.model.Cadastro;
 
 @Repository
-public interface CadastroRepository extends JpaRepository<Cadastro,Long> {
+public interface CadastroRepository extends JpaRepository<Cadastro,Integer> {
 
 	
 	

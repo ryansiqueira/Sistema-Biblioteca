@@ -21,7 +21,7 @@ public class Cadastro  implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Long id;
+	private Integer id;
 	
 	private String nome;
 	private String cpf;
@@ -40,7 +40,7 @@ public class Cadastro  implements Serializable {
 		
 	}
 	
-	public Cadastro(Long id, String nome, String cpf, String email, String telefone, String login, String senha ) {
+	public Cadastro(Integer id, String nome, String cpf, String email, String telefone, String login, String senha ) {
 		
 		this.id = id;
 		this.nome = nome;
@@ -64,13 +64,10 @@ public class Cadastro  implements Serializable {
 	}
 	
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;

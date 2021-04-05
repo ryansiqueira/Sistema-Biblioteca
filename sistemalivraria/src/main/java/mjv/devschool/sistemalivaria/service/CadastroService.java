@@ -1,7 +1,6 @@
 package mjv.devschool.sistemalivaria.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +12,7 @@ import mjv.devschool.sistemalivaria.exception.BusinessException;
 import mjv.devschool.sistemalivaria.exception.CampoObrigatorioException;
 import mjv.devschool.sistemalivaria.model.Cadastro;
 import mjv.devschool.sistemalivaria.model.Endereco;
+import mjv.devschool.sistemalivaria.model.Livro;
 import mjv.devschool.sistemalivaria.repositorie.CadastroRepository;
 
 @Service
@@ -25,22 +25,22 @@ public class CadastroService {
 	//private ViaCEPClient viaCepClient;
 	
 	
-	public List<CadastroDto> findAll(){
+	public Iterable<Cadastro> findAll(){
 		
 		List<Cadastro> list = cadRepository.findAll();
-		return list.stream().map(x -> new CadastroDto(x)).collect(Collectors.toList());
 		
+		return list;
 	}
 
 	@Transactional
-	public CadastroDto insert(CadastroDto dto) {
+	public Cadastro insert(CadastroDto dto) {
 		
 		Cadastro entidade = new Cadastro();
 		cpDtoParaEntidade(dto,entidade); 
 		verificaLogin(entidade);
-		verificaEndereco(entidade);
+		//verificaEndereco(entidade);
 		entidade = cadRepository.save(entidade);
-		return new CadastroDto(entidade);
+		return entidade;
 		
 	}
 	

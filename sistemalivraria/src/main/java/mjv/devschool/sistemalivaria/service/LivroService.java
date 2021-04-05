@@ -26,22 +26,22 @@ public class LivroService {
 	}
     */
 	@Transactional
-	public LivroDto buscarLivroPorId(Long id) {
+	public Livro buscarLivroPorId(Integer id) {
 
 		Optional<Livro> livro = livrorepository.findById(id);
 		Livro entidade = livro.orElseThrow();
-		return new LivroDto(entidade);
+		return entidade;
 
 	}
 	
 	
 	@Transactional
-	public LivroDto CadastrarLivro(LivroDto livrodto) {
+	public Livro CadastrarLivro(LivroDto livrodto) {
 		
 		Livro livro = new Livro();
 		cpDtoParaEntidade(livrodto,livro);        		
 		livro = livrorepository.save(livro);
-		return new LivroDto(livro);
+		return livro;
 		
 	}
 	

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import mjv.devschool.sistemalivaria.dto.CadastroDto;
+import mjv.devschool.sistemalivaria.model.Cadastro;
 import mjv.devschool.sistemalivaria.service.CadastroService;
 
 
@@ -26,9 +27,9 @@ public class CadastroResource {
 	
 	
 	@GetMapping
-	public ResponseEntity<List<CadastroDto>> findAll(){
+	public ResponseEntity<Iterable<Cadastro>> findAll(){
 		
-		List<CadastroDto> list = cadservice.findAll();
+		Iterable<Cadastro> list = cadservice.findAll();
 		
 		return ResponseEntity.ok().body(list);
 	}
@@ -44,13 +45,13 @@ public class CadastroResource {
 	*/
 	
 	@PostMapping
-	public ResponseEntity<CadastroDto> insert(@RequestBody CadastroDto dto){
+	public ResponseEntity<Cadastro> insert(@RequestBody CadastroDto dto){
 		
-		dto = cadservice.insert(dto);
+		Cadastro cad = cadservice.insert(dto);
 		
 	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		
-		return ResponseEntity.created(uri).body(dto);
+		return ResponseEntity.created(uri).body(cad);
 
 	}
 	

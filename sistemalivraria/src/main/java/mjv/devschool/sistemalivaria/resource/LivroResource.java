@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import mjv.devschool.sistemalivaria.dto.LivroDto;
+import mjv.devschool.sistemalivaria.model.Livro;
 import mjv.devschool.sistemalivaria.service.LivroService;
 
 
@@ -42,13 +43,13 @@ public class LivroResource {
 	*/
 	
 	@PostMapping
-	public ResponseEntity<LivroDto> insert(@RequestBody LivroDto livrodto){
+	public ResponseEntity<Livro> insert(@RequestBody LivroDto livrodto){
 		
-		livrodto = livroservice.CadastrarLivro(livrodto);
+		Livro l =livroservice.CadastrarLivro(livrodto);
 		
-	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(livrodto.getId()).toUri();
+	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(l.getId()).toUri();
 		
-		return ResponseEntity.created(uri).body(livrodto);
+		return ResponseEntity.created(uri).body(l);
 
 	}
 	

@@ -34,17 +34,7 @@ public class LivroDto implements Serializable {
 	
 	}
 	
-	public LivroDto(Livro entidade) {
-		
-		this.id = entidade.getId();
-		this.isbn = entidade.getIsbn();
-		this.titulo = entidade.getTitulo();
-		this.valorDiaria = entidade.getValorDiaria();
-		this.exemplares = entidade.getExemplares();
-		this.reservados = entidade.getReservados();
-		
 	
-	}
 	
 
 	public String getTitulo() {

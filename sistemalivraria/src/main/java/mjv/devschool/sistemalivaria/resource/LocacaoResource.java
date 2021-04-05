@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import mjv.devschool.sistemalivaria.dto.LocacaoDto;
+import mjv.devschool.sistemalivaria.model.Locacao;
 import mjv.devschool.sistemalivaria.service.LocacaoService;
 
 @RestController
@@ -22,18 +23,15 @@ public class LocacaoResource {
 	
 	
 	@PostMapping
-	public ResponseEntity<LocacaoDto> gerarLocacao(@RequestBody LocacaoDto locdto){
+	public ResponseEntity<LocacaoDto> insert(@RequestBody LocacaoDto locdto){
 		
-		locdto = locservice.gerarLocacao(locdto);
+		Locacao loc = locservice.insert(locdto);
 		
-	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(locdto.getId()).toUri();
+	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(loc.getId()).toUri();
 		
 		return ResponseEntity.created(uri).body(locdto);
 
 	}
-	
-	
-		
 	
 	
 	
