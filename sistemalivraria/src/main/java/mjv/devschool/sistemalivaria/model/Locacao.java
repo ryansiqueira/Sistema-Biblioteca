@@ -34,7 +34,7 @@ public class Locacao implements Serializable {
 	private Date finalizacao;
 	private Double valorTotal;
 	
-	private LocacaoStatus status = LocacaoStatus.RESERVADO;
+	private LocacaoStatus status;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cadastro_id",referencedColumnName = "id")
@@ -46,12 +46,44 @@ public class Locacao implements Serializable {
 	/*@JoinTable(name = "tb_locacao_locacaoItem",
 	joinColumns = @JoinColumn(name = "locacao_id" ),
 	inverseJoinColumns = @JoinColumn(name = "locacaoItem_id"))*/
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "locacaoitem_id", referencedColumnName="id")
 	
-	List<LocacaoItem> locacaoitem = new ArrayList<>();
-	//LocacaoItem locacaoitem = new LocacaoItem();
+	/*@ManyToMany
+	@JoinTable(name = "tb_locacao_locacaoItems",
+		joinColumns = @JoinColumn(name = "locacao_id"), 
+		inverseJoinColumns = @JoinColumn(name = "locacaoItems_id"))
+	//@JoinColumn(name = "locacaoitem_id", referencedColumnName="id")
+	*/
+	@OneToMany
+	@JoinColumn(name = "id")
+	List<LocacaoItem> locacaoItem = new ArrayList<>();
  	
+	
+
+
+	public Locacao() {
+		
+	}
+	
+	
+	public Locacao(Long id, Date dataAgendamento, Date dataRetirada, Date finalizacao, Double valorTotal , LocacaoStatus status ) {
+	
+		this.id = id;
+		this.dataAgendamento = dataAgendamento;
+		this.dataRetirada = dataRetirada;
+		this.finalizacao = finalizacao;
+		this.valorTotal = valorTotal;
+		this.status = status;
+	}
+	
+	public Locacao(Date dataAgendamento,LocacaoStatus status, Double valorTotal) {
+		
+		this.dataAgendamento = dataAgendamento;
+		this.status = status;
+		this.valorTotal = valorTotal;
+		
+		
+	}
+	
 	
 	public LocacaoStatus getStatus() {
 		return status;
@@ -69,29 +101,13 @@ public class Locacao implements Serializable {
 		this.cadastro = cadastro;
 	}
 
-	//public LocacaoItem getLocacaoitem() {
-		//	return locacaoitem;
-		//}
-
-	//public void setLocacaoitem(LocacaoItem locacaoitem) {
-	//	this.locacaoitem = locacaoitem;
-	//}
-
-	public Locacao() {
-		
-	}
-	
-	public Locacao(Long id, Date dataAgendamento, Date dataRetirada, Date finalizacao, Double valorTotal , LocacaoStatus status ) {
-	
-		this.id = id;
-		this.dataAgendamento = dataAgendamento;
-		this.dataRetirada = dataRetirada;
-		this.finalizacao = finalizacao;
-		this.valorTotal = valorTotal;
-		this.status = status;
+	public List<LocacaoItem> getLocacaoItem() {
+		return locacaoItem;
 	}
 
-	
+	public void setLocacaoItem(List<LocacaoItem> locacaoItem) {
+		this.locacaoItem = locacaoItem;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -101,7 +117,8 @@ public class Locacao implements Serializable {
 	}
 
 	public Date getDataAgendamento() {
-		return dataAgendamento;
+		
+		return new Date();
 	}
 
 	public void setDataAgendamento(Date dataAgendamento) {
@@ -125,6 +142,7 @@ public class Locacao implements Serializable {
 	}
 
 	public Double getValorTotal() {
+		this.valorTotal = 0.0;
 		return valorTotal;
 	}
 

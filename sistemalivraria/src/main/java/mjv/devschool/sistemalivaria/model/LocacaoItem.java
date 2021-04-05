@@ -1,10 +1,7 @@
 package mjv.devschool.sistemalivaria.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,8 +26,8 @@ public class LocacaoItem implements Serializable {
 	@Column(name ="id")
 	private Long id;
 	
-	private LocalDate dataPrevisaoEntrega;
-	private LocalDate dataEntrega;
+	private Date dataPrevisaoEntrega;
+	private Date dataEntrega;
 	private Integer diarias;
 	private Double valorDiaria;
 	private Double valorLocacao;
@@ -39,14 +36,13 @@ public class LocacaoItem implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "livros_id")
-	private Livro livro;
-	//List<Livro> livros = new ArrayList<>();
+	Livro livro = new Livro();
 	
 	public LocacaoItem() {
 		
 	}
 
-	public LocacaoItem(Long id, LocalDate dataPrevisaoEntrega, LocalDate dataEntrega, Integer diarias, Double valorDiaria, Double valorLocacao,Livro livro ) {
+	public LocacaoItem(Long id, Date dataPrevisaoEntrega, Date dataEntrega, Integer diarias, Double valorDiaria, Double valorLocacao) {
 		
 		this.id = id;
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
@@ -54,7 +50,6 @@ public class LocacaoItem implements Serializable {
 		this.diarias = diarias;
 		this.valorDiaria = valorDiaria;
 		this.valorLocacao = valorLocacao;
-		this.livro = livro;
 	}
 
 	public Long getId() {
@@ -65,19 +60,19 @@ public class LocacaoItem implements Serializable {
 		this.id = id;
 	}
 
-	public LocalDate getDataPrevisaoEntrega() {
+	public Date getDataPrevisaoEntrega() {
 		return dataPrevisaoEntrega;
 	}
 
-	public void setDataPrevisaoEntrega(LocalDate dataPrevisaoEntrega) {
+	public void setDataPrevisaoEntrega(Date dataPrevisaoEntrega) {
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
 	}
 
-	public LocalDate getDataEntrega() {
+	public Date getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(LocalDate dataEntrega) {
+	public void setDataEntrega(Date dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
@@ -103,14 +98,6 @@ public class LocacaoItem implements Serializable {
 
 	public void setValorLocacao(Double valorLocacao) {
 		this.valorLocacao = valorLocacao;
-	}
-	
-	public Livro getLivro() {
-		return livro;
-	}
-
-	public void setLivro(Livro livro) {
-		this.livro = livro;
 	}
 	
 	

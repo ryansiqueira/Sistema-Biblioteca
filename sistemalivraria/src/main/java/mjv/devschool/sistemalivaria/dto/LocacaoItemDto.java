@@ -1,32 +1,33 @@
 package mjv.devschool.sistemalivaria.dto;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 
-import mjv.devschool.sistemalivaria.model.LocacaoItem;
+import mjv.devschool.sistemalivaria.model.Livro;
 
-public class LocacaoItemDto implements Serializable{
+public class LocacaoItemDto implements Serializable {
 
-	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	
-	private LocalDate dataPrevisaoEntrega;
-	private LocalDate dataEntrega;
+	private Date dataPrevisaoEntrega;
+	private Date dataEntrega;
 	private Integer diarias;
 	private Double valorDiaria;
 	private Double valorLocacao;
 	
-	LocacaoDto locacaoDto;
 	
-
+	LivroDto livroDto = new LivroDto();
+	
 	public LocacaoItemDto() {
 		
 	}
 	
-	public LocacaoItemDto(Long id, LocalDate dataPrevisaoEntrega,LocalDate dataEntrega,Integer diarias,Double valorDiaria,Double valorLocacao) {
+	public LocacaoItemDto(Long id, Date dataPrevisaoEntrega,Date dataEntrega,Integer diarias, Double valorDiaria,Double valorLocacao) {
 		
 		this.id = id;
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
@@ -36,29 +37,10 @@ public class LocacaoItemDto implements Serializable{
 		this.valorLocacao = valorLocacao;
 		
 	}
-	
-	public LocacaoItemDto(LocacaoItem entidade) {
-		
-		this.id = entidade.getId();
-		this.dataPrevisaoEntrega = entidade.getDataPrevisaoEntrega();
-		this.dataEntrega = entidade.getDataEntrega();
-		this.diarias = entidade.getDiarias();
-		this.valorDiaria = entidade.getValorDiaria();
-		this.valorLocacao = entidade.getValorLocacao();
-		
-	}
-	
-	
-	
 
-	public LocacaoDto getLocacaoDto() {
-		return locacaoDto;
-	}
-
-	public void setLocacaoDto(LocacaoDto locacaoDto) {
-		this.locacaoDto = locacaoDto;
-	}
-
+	
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -67,19 +49,19 @@ public class LocacaoItemDto implements Serializable{
 		this.id = id;
 	}
 
-	public LocalDate getDataPrevisaoEntrega() {
+	public Date getDataPrevisaoEntrega() {
 		return dataPrevisaoEntrega;
 	}
 
-	public void settDataPrevisaoEntrega(LocalDate dataPrevisaoEntrega) {
+	public void setDataPrevisaoEntrega(Date dataPrevisaoEntrega) {
 		this.dataPrevisaoEntrega = dataPrevisaoEntrega;
 	}
 
-	public LocalDate getDataEntrega() {
+	public Date getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(LocalDate dataEntrega) {
+	public void setDataEntrega(Date dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
@@ -99,18 +81,13 @@ public class LocacaoItemDto implements Serializable{
 		this.valorDiaria = valorDiaria;
 	}
 
-	public Double getvalorLocacao() {
+	public Double getValorLocacao() {
 		return valorLocacao;
 	}
 
-	public void setvalorLocacao(Double valorLocacao) {
+	public void setValorLocacao(Double valorLocacao) {
 		this.valorLocacao = valorLocacao;
 	}
-	
-	
-	
-	
-	
 	
 	
 	

@@ -17,14 +17,16 @@ public class CadastroDto implements Serializable{
 	private String telefone;
 	private String login;
 	private String senha;
-	private String cep;
+	
+	
+	EnderecoDto enderecoDto = new EnderecoDto();
 	
 	
 	public CadastroDto() {
 		
 	}
 	
-	public CadastroDto(Long id, String nome,String email,String cpf,String telefone,String login,String senha, String cep) {
+	public CadastroDto(Long id, String nome,String email,String cpf,String telefone,String login,String senha) {
 		
 		this.id = id;
 		this.nome = nome;
@@ -33,7 +35,6 @@ public class CadastroDto implements Serializable{
 		this.telefone = telefone;
 		this.login = login;
 		this.senha = senha;
-		this.cep=cep;
 		
 	}
 	
@@ -46,11 +47,27 @@ public class CadastroDto implements Serializable{
 		this.telefone = entidade.getTelefone();
 		this.login = entidade.getLogin();
 		this.senha = entidade.getSenha();
-		this.cep = entidade.getCep();
+		this.enderecoDto.setId(entidade.getEndereco().getId());
+		this.enderecoDto.setCep(entidade.getEndereco().getCep());
+		this.enderecoDto.setLogradouro(entidade.getEndereco().getLogradouro());
+		this.enderecoDto.setBairro(entidade.getEndereco().getBairro());
+		this.enderecoDto.setLocalidade(entidade.getEndereco().getLocalidade());
+		this.enderecoDto.setUf(entidade.getEndereco().getUf());
+		this.enderecoDto.setIbge(entidade.getEndereco().getIbge());
 		
 	}
 	
 
+
+	public EnderecoDto getEnderecoDto() {
+		return enderecoDto;
+	}
+
+	public void setEnderecoDto(EnderecoDto enderecoDto) {
+	     	
+		this.enderecoDto = enderecoDto;
+		
+	}
 
 	public Long getId() {
 		return id;
@@ -107,14 +124,6 @@ public class CadastroDto implements Serializable{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
 	}
 	
 
