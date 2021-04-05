@@ -31,6 +31,7 @@ public class Cadastro  implements Serializable {
 	private String senha;
 	private String cep;
 	
+	
 
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -42,7 +43,7 @@ public class Cadastro  implements Serializable {
 		
 	}
 	
-	public Cadastro(Long id, String nome, String cpf, String email, String telefone, String login, String senha, String cep ) {
+	public Cadastro(Long id, String nome, String cpf, String email, String telefone, String login, String senha,String cep) {
 		
 		this.id = id;
 		this.nome = nome;
@@ -52,6 +53,7 @@ public class Cadastro  implements Serializable {
 		this.login = login;
 		this.senha = senha;
 		this.cep = cep;
+		
 		//BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
 		
 	}
@@ -122,7 +124,6 @@ public class Cadastro  implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 	public String getCep() {
 		return cep;
 	}
@@ -131,7 +132,7 @@ public class Cadastro  implements Serializable {
 		this.cep = cep;
 	}
 
-	
+
 	
 
 	

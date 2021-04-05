@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -24,6 +25,9 @@ public class CadastroService {
 	@Autowired
 	private ViaCEPClient viaCepClient;
 	
+	@Autowired
+	private PasswordEncoder encoder;
+	
 	
 	public List<CadastroDto> findAll(){
 		
@@ -38,10 +42,15 @@ public class CadastroService {
 		Cadastro entidade = new Cadastro();
 		cpDtoParaEntidade(dto,entidade); 
 		verificaLogin(entidade);
+		String senhaCriptografada = encoder.encode(entidade.getSenha());
+		entidade.setSenha(senhaCriptografada);
+		cadRepository.save(entidade);
 		entidade = cadRepository.save(entidade);		
 		return new CadastroDto(entidade);
 		
+		
 	}
+	
 	
 	
 	
@@ -58,11 +67,7 @@ public class CadastroService {
 		Endereco end = viaCepClient.buscaEnderecoPor(dto.getCep());
 		
 		entidade.setEndereco(end);
-		 
-		//RestTemplate template = new RestTemplate();
-		//entidade.setEndereco(template.getForObject("https://viacep.com.br/ws/{cep}/json",
-//				Endereco.class,entidade.getEndereco().getCep()));
-
+	
 	
 	}
 	
