@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
+import exception.BusinessException;
+import exception.CampoObrigatorioException;
 import mjv.devschool.sistemalivaria.client.ViaCEPClient;
 import mjv.devschool.sistemalivaria.dto.CadastroDto;
 import mjv.devschool.sistemalivaria.dto.EnderecoDto;
@@ -22,7 +24,7 @@ public class CadastroService {
 	
 	
 	@Autowired
-	private ViaCEPClient viaCepClient;
+//	private ViaCEPClient viaCepClient;
 	
 	
 	public List<CadastroDto> findAll(){
@@ -38,6 +40,7 @@ public class CadastroService {
 		Cadastro entidade = new Cadastro();
 		cpDtoParaEntidade(dto,entidade); 
 		verificaLogin(entidade);
+		verificaEndereco(entidade);
 		entidade = cadRepository.save(entidade);		
 		return new CadastroDto(entidade);
 		
@@ -59,30 +62,37 @@ public class CadastroService {
 		
 		entidade.setEndereco(end);
 		 
-		//RestTemplate template = new RestTemplate();
-		//entidade.setEndereco(template.getForObject("https://viacep.com.br/ws/{cep}/json",
-//				Endereco.class,entidade.getEndereco().getCep()));
+		RestTemplate template = new RestTemplate();
+		entidade.setEndereco(template.getForObject("https://viacep.com.br/ws/{cep}/json",
+				Endereco.class,entidade.getEndereco().getCep()));
 
 	
 	}
 	
-	// Metodo para verificar o tamanho do campo login;
+	// Metodo para verificar o tamanho do campo login e se ele é nulo ou vazio;
 	private void verificaLogin(Cadastro login) {
 		var validaLogin = login.getLogin();
 		
 		if(validaLogin.length() > 20) {
-			System.out.println("Campo login não pode ultrapassar 20 caracteres");
+			throw new BusinessException("Campo login não pode ultrapassar 20 caracteres");
 			
 		}
-		if (validaLogin == null) {
-			System.out.println("Campo login não pode ser nulo");
+		if(validaLogin == null || validaLogin.isEmpty())
+		{
+			throw new CampoObrigatorioException("Campo login não pode ser nulo, nem vazio");
 		}
+	}		
+	
+		// Metodo para verificar se o campo endereco é nulo ou vazio
+		private void verificaEndereco(Cadastro endereco) {
+			var validaEndereco = endereco.getEndereco();
 			
-	}
-	
-	
-	
-	
-	
+			if(validaEndereco == null || validaEndereco.toString().isEmpty())
+			{
+				throw new CampoObrigatorioException("Campo endereço não pode ser nulo, nem vazio");
+			}
+			
+	}	
+				
 	
 }
