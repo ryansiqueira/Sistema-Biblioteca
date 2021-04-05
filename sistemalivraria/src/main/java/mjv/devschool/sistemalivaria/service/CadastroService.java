@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
-import exception.BusinessException;
-import exception.CampoObrigatorioException;
 import mjv.devschool.sistemalivaria.dto.CadastroDto;
+import mjv.devschool.sistemalivaria.exception.BusinessException;
+import mjv.devschool.sistemalivaria.exception.CampoObrigatorioException;
 import mjv.devschool.sistemalivaria.model.Cadastro;
 import mjv.devschool.sistemalivaria.model.Endereco;
 import mjv.devschool.sistemalivaria.repositorie.CadastroRepository;
@@ -77,11 +77,11 @@ public class CadastroService {
 		
 			// Metodo para verificar se o campo endereco é nulo ou vazio
 			private void verificaEndereco(Cadastro endereco) {
-				var validaEndereco = endereco.getEndereco();
+				var validaEndereco = endereco.getEndereco().getCep();
 				
 				if(validaEndereco == null || validaEndereco.toString().isEmpty())
 				{
-					throw new CampoObrigatorioException("Campo endereço não pode ser nulo, nem vazio");
+					throw new BusinessException("Campo endereço não pode ser nulo, nem vazio");
 				}
 				
 		}	

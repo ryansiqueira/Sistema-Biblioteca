@@ -1,4 +1,4 @@
-package exception;
+package mjv.devschool.sistemalivaria.exception;
 
 import java.time.LocalDateTime;
 

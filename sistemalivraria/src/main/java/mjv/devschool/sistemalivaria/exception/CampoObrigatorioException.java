@@ -1,4 +1,4 @@
-package exception;
+package mjv.devschool.sistemalivaria.exception;
 
 public class CampoObrigatorioException extends BusinessException {
 

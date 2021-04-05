@@ -1,4 +1,4 @@
-package exception;
+package mjv.devschool.sistemalivaria.exception;
 
 public class BusinessException extends RuntimeException  { 
 		public BusinessException(String mensagem) {
